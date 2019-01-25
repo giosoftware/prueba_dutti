@@ -4,13 +4,9 @@
         .module('app')
         .controller('StarshipsController', StarshipsController)
         .component('customMdList', {
-            template: '<ul>' +
-                '<li ng-repeat="ship in $ctrl.viewShips">' +
-                '<span>{{ship.name}}</span>' +
-                '</li>' +
-                '</ul>' +
-                '<button ng-click="$ctrl.getMore($ctrl.viewShips.length)">más datos</button>',
+            templateUrl: 'customMdList/customMdList.html',
             controller: StarshipsController
+            
         });
 
     StarshipsController.$inject = ['ShipService'];
@@ -18,7 +14,7 @@
         var vm = this;
         vm.allShips = [];
         vm.viewShips = [];
-        vm.showDetails
+        vm.details;
 
         initController();
 
@@ -35,6 +31,14 @@
                 .catch(function (err) {
                     console.error(err.message)
                 });
+        }
+
+        vm.showDetails = function(index) {
+            if (vm.details == index) {
+                vm.details = -1;
+            } else {
+                vm.details = index;
+            vm.details = index;}
         }
 
         vm.getMore = function (index) {

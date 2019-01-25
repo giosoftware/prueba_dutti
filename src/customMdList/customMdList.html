@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="thumbnail col-6 col-md-4" ng-repeat="ship in $ctrl.viewShips">
+        <button ng-click="$ctrl.showDetails($index)">{{ship.name}} - {{details}}</button>
+        <div ng-show="$ctrl.details==$index" class="thumbnail col-12 border">{{ship | json}}</div>
+    </div>
+    <div class="clearfix"></div>
+    <button ng-click="$ctrl.getMore($ctrl.viewShips.length)">más datos</button>
+</div>
